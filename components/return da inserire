@@ -1,0 +1,49 @@
+<Text>Weight</Text>
+        {/* INSERISCI "INSERT WEIGHT (KG)" COME DEFAULT.  */}
+        <TextInput
+        style={styles.input}
+        onChangeText={text => setWeight(text)}
+        placeholder='in kilograms'
+        keyboardType='numeric'></TextInput>
+
+        <View>
+          <Text>Bottles</Text>
+          {/* ANCORA NON FUNZIONA SU ANDROID */}
+          <Picker
+            onValueChange={(itemValue) => setBottles(itemValue)}
+            selectedValue={bottles}
+          >
+            {bottlesArray.map((bottle, index) => (
+              <Picker.Item key={index} label={bottle.label} value={bottle.value}/>
+            ))
+            }
+          </Picker>
+        </View>
+
+        <View style={styles.field}>
+          <Text>Time</Text>
+          {/* AGGIUNGI TUTTO IL NECESSARIO */}
+          <Picker 
+            onValueChange={(itemValue) => setTime(itemValue)}
+            selectedValue={time}
+          >
+            {hours.map((hour, index) => (
+              <Picker.Item key={index} label={hour.label} value={hour.value}/>
+            ))
+            }
+          </Picker>
+        </View>
+
+        <Text>Gender</Text>
+        <RadioForm
+          style={styles.radio}
+          buttonSize={10}
+          radio_props={genders}
+          initial={0}
+          onPress={(value) => setGender({value})}
+          
+        />
+
+        <Text>{bloodAlcoholLevel.toFixed(2)}</Text>
+        
+        <Button onPress={calculate} title="Calculate"></Button>
